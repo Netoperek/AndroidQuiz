@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quiz</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="quiz">Quiz</string>
+    <string name="submit">Submit</string>
+    <string name="myInput">myInput</string>
+    <string name="questions">Add file with questions</string>
+    <string name="choose">choose file...</string>
+
+</resources>
