@@ -8,19 +8,18 @@ package com.example.quiz;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
-import com.example.quiz.R.id;
 import com.example.quiz.R.layout;
 import org.androidannotations.api.builder.ActivityIntentBuilder;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
 
-public final class MyActivity_
-    extends MyActivity
+public final class FileExploringActivity_
+    extends FileExploringActivity
     implements HasViews, OnViewChangedListener
 {
 
@@ -32,7 +31,7 @@ public final class MyActivity_
         init_(savedInstanceState);
         super.onCreate(savedInstanceState);
         OnViewChangedNotifier.replaceNotifier(previousNotifier);
-        setContentView(layout.activity_main);
+        setContentView(layout.activity_file_exploring);
     }
 
     private void init_(Bundle savedInstanceState) {
@@ -57,54 +56,57 @@ public final class MyActivity_
         onViewChangedNotifier_.notifyViewChanged(this);
     }
 
-    public static MyActivity_.IntentBuilder_ intent(Context context) {
-        return new MyActivity_.IntentBuilder_(context);
+    public static FileExploringActivity_.IntentBuilder_ intent(Context context) {
+        return new FileExploringActivity_.IntentBuilder_(context);
     }
 
-    public static MyActivity_.IntentBuilder_ intent(android.app.Fragment fragment) {
-        return new MyActivity_.IntentBuilder_(fragment);
+    public static FileExploringActivity_.IntentBuilder_ intent(android.app.Fragment fragment) {
+        return new FileExploringActivity_.IntentBuilder_(fragment);
     }
 
-    public static MyActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
-        return new MyActivity_.IntentBuilder_(supportFragment);
+    public static FileExploringActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
+        return new FileExploringActivity_.IntentBuilder_(supportFragment);
     }
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        chooseFileButton = ((Button) hasViews.findViewById(id.chooseFileButton));
-        addFileText = ((TextView) hasViews.findViewById(id.addFile));
-        if (chooseFileButton!= null) {
-            chooseFileButton.setOnClickListener(new OnClickListener() {
+        myPath = ((TextView) hasViews.findViewById(com.example.quiz.R.id.path));
+        {
+            AdapterView<?> view = ((AdapterView<?> ) hasViews.findViewById(android.R.id.list));
+            if (view!= null) {
+                view.setOnItemClickListener(new OnItemClickListener() {
 
 
-                @Override
-                public void onClick(View view) {
-                    MyActivity_.this.chooseFile();
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        FileExploringActivity_.this.listItemClicked(position);
+                    }
+
                 }
-
+                );
             }
-            );
         }
+        getDirRoot();
     }
 
     public static class IntentBuilder_
-        extends ActivityIntentBuilder<MyActivity_.IntentBuilder_>
+        extends ActivityIntentBuilder<FileExploringActivity_.IntentBuilder_>
     {
 
         private android.app.Fragment fragment_;
         private android.support.v4.app.Fragment fragmentSupport_;
 
         public IntentBuilder_(Context context) {
-            super(context, MyActivity_.class);
+            super(context, FileExploringActivity_.class);
         }
 
         public IntentBuilder_(android.app.Fragment fragment) {
-            super(fragment.getActivity(), MyActivity_.class);
+            super(fragment.getActivity(), FileExploringActivity_.class);
             fragment_ = fragment;
         }
 
         public IntentBuilder_(android.support.v4.app.Fragment fragment) {
-            super(fragment.getActivity(), MyActivity_.class);
+            super(fragment.getActivity(), FileExploringActivity_.class);
             fragmentSupport_ = fragment;
         }
 

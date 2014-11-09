@@ -5,6 +5,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ public class MyActivity extends Activity {
 	
 	@Click(R.id.chooseFileButton)
 	void chooseFile() {
+		Intent intent = new Intent(this, FileExploringActivity_.class);
+		startActivity(intent);
 	}
 	
 }

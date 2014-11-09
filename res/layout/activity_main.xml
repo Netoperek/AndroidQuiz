@@ -18,15 +18,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="57dp"
-        android:text="@string/submit" />
-
-    <Button
         android:id="@+id/chooseFileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
