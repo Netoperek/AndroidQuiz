@@ -11,8 +11,8 @@ import org.androidannotations.annotations.ViewById;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Environment;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -86,9 +86,9 @@ public class FileExploringActivity extends ListActivity {
 						.setPositiveButton(OK, null).show();
 			}
 		} else if (file.getName().contains(TXT_EXTENSION)) {
-			Log.i("READER", "OK");
 			QuestionParser.parseQuestions(file);
-
+			Intent intent = new Intent(this, QuestionActivity_.class);
+			startActivity(intent);
 		} else {
 			new AlertDialog.Builder(this).setIcon(R.drawable.ic_launcher)
 					.setTitle(NOT_TXT_FILE).setPositiveButton(OK, null).show();

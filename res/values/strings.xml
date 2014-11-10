@@ -13,5 +13,8 @@
     <string name="path">path</string>
     <string name="noData">No Data</string>
     <string name="readExternalStorage">read external storage</string>
+    <string name="title_activity_question">QuestionActivity</string>
+    <string name="questionNumber">Question Number: </string>
+    <string name="nextQuestion">Next Question</string>
 
 </resources>

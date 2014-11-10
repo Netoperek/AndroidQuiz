@@ -8,16 +8,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import android.util.SparseArray;
 
 public class QuestionParser {
 
-	static HashMap<Question, List<Answer>> questions = new HashMap<Question, List<Answer>>();
 	static QuestionParserParameters questionParserParameters = QuestionParserParameters
 			.getInstance();
 
 	static BufferedReader reader;
+	static int questionNumber = 1;
 
 	public static void parseQuestions(File file) {
 		try {
@@ -66,13 +67,26 @@ public class QuestionParser {
 		}
 	}
 
+	private static List<String> removeEmptyLines(String[] lines) {
+		List<String> result = new ArrayList<String>();
+		for (String line : lines) {
+			if (line.length() != 0) {
+				result.add(line);
+			}
+		}
+		return result;
+	}
+
 	private static void getQuestion(String questionConent) {
 		int index = 1;
-		String[] questionContentArray = questionConent.split("\n");
-		List<Answer> answers = new ArrayList<Answer>();
-		Question question = new Question();
-		question.setContent(questionContentArray[index]);
+		int answerIndex = 0;
 
+		String[] questionContentArray = questionConent.split("\n");
+		SparseArray<Answer> answers = new SparseArray<Answer>();
+		Question question = new Question();
+		List<String> questionContentList = removeEmptyLines(questionContentArray);
+
+		question.setContent(questionContentList.get(index));
 		for (int i = ++index; i < questionContentArray.length; i++) {
 			Answer answer = new Answer();
 			if (questionContentArray[i].contains(questionParserParameters
@@ -82,10 +96,10 @@ public class QuestionParser {
 						questionParserParameters.getCORRECT_ANSWER(), "");
 			}
 			answer.setContent(questionContentArray[i]);
-			answers.add(answer);
+			answers.put(answerIndex++, answer);
+			question.setAnswers(answers);
 		}
-
-		questions.put(question, answers);
+		QuestionsDispatcher.questions.put(questionNumber++, question);
 	}
 
 }

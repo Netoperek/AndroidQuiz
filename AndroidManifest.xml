@@ -28,6 +28,11 @@
             android:name=".FileExploringActivity_"
             android:label="@string/title_activity_file_exploring" >
         </activity>
+        <activity
+            android:name=".QuestionActivity_"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize"
+            android:label="@string/title_activity_question" >
+        </activity>
     </application>
 
 </manifest>
