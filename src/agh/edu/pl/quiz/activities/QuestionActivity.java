@@ -13,12 +13,17 @@ import agh.edu.pl.quiz.helpers.Answer;
 import agh.edu.pl.quiz.helpers.Answer.Marked;
 import agh.edu.pl.quiz.helpers.Question;
 import agh.edu.pl.quiz.helpers.QuestionsDispatcher;
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.quiz.R;
@@ -31,12 +36,18 @@ public class QuestionActivity extends ListActivity {
 	private final String QUESTIONS_NUMBER = " Number of questions : ";
 	private final String FINISH = " Finish Quiz";
 	private final String CHECK_ANSWERS = " Check Answers";
+	private final String NO_QUESTIONS = " No questions loaded, try another file.";
+
 	private final int SELECTED_COLOR = Color.parseColor("#b6fcd5");
 	private final int UNSELECTED_COLOR = Color.WHITE;
 	private final int CHECK_ANSWERS_COLOR = Color.parseColor("#7fffd4");
 	private final int NEXT_QUESTION_COLOR = Color.parseColor("#b6fcd5");
 	private final int ANSWER_MARKED_CORRECT = Color.parseColor("#00ff7f");
 	private final int ANSWER_MARKED_INCORRECT = Color.parseColor("#ff4040");
+	private final int QUESTION_COLOR = Color.parseColor("#0a6dbb");
+	private final String CORRECT = " Correct: ";
+	private final String INCORRECT = " Incorrect: ";
+	private final String SCORE = " Score: ";
 
 	private List<Integer> selected;
 	private Question question;
@@ -52,8 +63,10 @@ public class QuestionActivity extends ListActivity {
 			String number = Integer.toString(QuestionsDispatcher
 					.getQuestionIndex());
 			questionsNumber.setText("");
-			questionNumber.setText(QUESTION_NUMBER + " " + number);
+			questionNumber.setText(QUESTION_NUMBER + " " + number + " / "
+					+ QuestionsDispatcher.getQuestionsNumber());
 			questionContent.setText(question.getContent());
+			questionContent.setTextColor(QUESTION_COLOR);
 			nextQuestionButton.setText(CHECK_ANSWERS);
 			nextQuestionButton.setBackgroundColor(CHECK_ANSWERS_COLOR);
 
@@ -87,12 +100,55 @@ public class QuestionActivity extends ListActivity {
 		} else {
 			QuestionsDispatcher.addInorrectlyAnswered();
 		}
+		showStatistics();
 		nextQuestionButton.setBackgroundColor(NEXT_QUESTION_COLOR);
 		nextQuestionButton.setText(NEXT_QUESTION);
 		if (QuestionsDispatcher.getQuestionIndex() == QuestionsDispatcher
 				.getQuestionsNumber()) {
 			nextQuestionButton.setText(FINISH);
 		}
+	}
+
+	private void prepareMenu() {
+		ActionBar mActionBar = getActionBar();
+		mActionBar.setDisplayShowHomeEnabled(false);
+		mActionBar.setDisplayShowTitleEnabled(false);
+		LayoutInflater mInflater = LayoutInflater.from(this);
+		View mCustomView = mInflater.inflate(R.layout.quiz_actionbar, null);
+
+		ImageButton loadButton = (ImageButton) mCustomView
+				.findViewById(R.id.loadButton);
+		loadButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(getApplicationContext(),
+						MainActivity_.class);
+				startActivity(intent);
+			}
+		});
+
+		ImageButton restertButton = (ImageButton) mCustomView
+				.findViewById(R.id.restartButton);
+		restertButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				QuestionsDispatcher.setFromStart();
+				Intent intent = new Intent(getApplicationContext(),
+						QuestionActivity_.class);
+				startActivity(intent);
+			}
+		});
+
+		mActionBar.setCustomView(mCustomView);
+		mActionBar.setDisplayShowCustomEnabled(true);
+	}
+
+	private void showStatistics() {
+		correct.setText(CORRECT + QuestionsDispatcher.getCorrectAnswers());
+		incorrect.setText(INCORRECT + QuestionsDispatcher.getWrongAnswers());
+		double percentage = (((double) QuestionsDispatcher.getCorrectAnswers()) / ((double) QuestionsDispatcher
+				.getQuestionsNumber())) * 100;
+		score.setText(SCORE + percentage + "%");
 	}
 
 	@ViewById(R.id.questionNumber)
@@ -106,16 +162,29 @@ public class QuestionActivity extends ListActivity {
 
 	@ViewById(R.id.questionsNumber)
 	TextView questionsNumber;
-	
-	@ViewById(R.id.restartTest)
-	Button restartTestButton;
+
+	@ViewById(R.id.questionCorrect)
+	TextView correct;
+
+	@ViewById(R.id.questionIncorrect)
+	TextView incorrect;
+
+	@ViewById(R.id.questionScore)
+	TextView score;
 
 	@AfterViews
-	void setButtonText() {
-		nextQuestionButton.setText(START);
-		nextQuestionButton.setBackgroundColor(NEXT_QUESTION_COLOR);
-		questionsNumber.setText(QUESTIONS_NUMBER
-				+ QuestionsDispatcher.getQuestionsNumber());
+	void prepareData() {
+		if (QuestionsDispatcher.getQuestionsNumber() == 0) {
+			questionContent.setText(NO_QUESTIONS);
+		} else {
+			showStatistics();
+			nextQuestionButton.setText(START);
+			nextQuestionButton.setBackgroundColor(NEXT_QUESTION_COLOR);
+			questionsNumber.setText(QUESTIONS_NUMBER
+					+ QuestionsDispatcher.getQuestionsNumber());
+
+		}
+		prepareMenu();
 	}
 
 	@Click(R.id.nextQuestion)

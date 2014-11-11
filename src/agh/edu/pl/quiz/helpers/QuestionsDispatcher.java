@@ -14,9 +14,16 @@ public class QuestionsDispatcher {
 
 	public static void setDispatcher() {
 		questions.clear();
+		setFromStart();
+	}
+	
+	public static void setFromStart() {
 		questionIndex = 0;
 		incorrectAnswers = 0;
 		correctAnswers = 0;
+		for(int i = 0; i < questions.size(); i++) {
+			questions.get(i).setFromStart();
+		}
 	}
 
 	public static Question getNextQuestion() {

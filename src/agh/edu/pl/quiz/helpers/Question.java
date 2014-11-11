@@ -7,6 +7,13 @@ public class Question {
 	private boolean correct;
 	private String content;
 	private SparseArray<Answer> answers = new SparseArray<Answer>();
+	
+	public void setFromStart() {
+		correct = false;
+		for(int i = 0; i < answers.size(); i++) {
+			answers.get(i).setFromStart();
+		}
+	}
 
 	public int getNumber() {
 		return number;

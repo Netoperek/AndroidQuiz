@@ -5,6 +5,10 @@ public class Answer {
 	private boolean correct;
 	private String content;
 	private Marked marked = Marked.UNMARKED;
+	
+	public void setFromStart() {
+		marked = Marked.UNMARKED;
+	}
 
 	public String getContent() {
 		return content;
