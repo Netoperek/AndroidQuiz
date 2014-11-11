@@ -37,4 +37,21 @@
         android:layout_marginTop="25dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <Button
+        android:id="@+id/finishResterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/incorrect"
+        android:layout_centerVertical="true"
+        android:text="@string/restart" />
+
+    <Button
+        android:id="@+id/finishLoadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/finishResterButton"
+        android:layout_below="@+id/finishResterButton"
+        android:layout_marginTop="26dp"
+        android:text="@string/load" />
+
 </RelativeLayout>

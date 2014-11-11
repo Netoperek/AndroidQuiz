@@ -8,7 +8,9 @@ package agh.edu.pl.quiz.activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.TextView;
 import com.example.quiz.R.id;
 import com.example.quiz.R.layout;
@@ -69,8 +71,35 @@ public final class FinishActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        score = ((TextView) hasViews.findViewById(id.score));
+        finishLoadButton = ((Button) hasViews.findViewById(id.finishLoadButton));
         correct = ((TextView) hasViews.findViewById(id.correct));
         incorrect = ((TextView) hasViews.findViewById(id.incorrect));
+        finishRestartButton = ((Button) hasViews.findViewById(id.finishResterButton));
+        if (finishLoadButton!= null) {
+            finishLoadButton.setOnClickListener(new OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    FinishActivity_.this.load();
+                }
+
+            }
+            );
+        }
+        if (finishRestartButton!= null) {
+            finishRestartButton.setOnClickListener(new OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    FinishActivity_.this.restart();
+                }
+
+            }
+            );
+        }
         showStatistics();
     }
 

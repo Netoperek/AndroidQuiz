@@ -20,5 +20,7 @@
     <string name="correct">"Correct: "</string>
     <string name="incorrect">"Incorrect: "</string>
     <string name="score">"Score: "</string>
+    <string name="restart">"Restart"</string>
+    <string name="load">"Load Questions"</string>
 
 </resources>
