@@ -5,6 +5,10 @@ This system allowes you to test yourself.
 It is really simple, you just have to have questions in this format:
 
 '''
+code
+'''
+
+'''
 Pytanie 1
 
 Jakies pytanie ? 
