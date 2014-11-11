@@ -4,11 +4,7 @@ This system allowes you to test yourself.
 
 It is really simple, you just have to have questions in this format:
 
-'''
-code
-'''
-
-'''
+```
 Pytanie 1
 
 Jakies pytanie ? 
@@ -51,8 +47,7 @@ A) Jakas odpowiedz
 B) Jakas odpowiedz 
 C) Jakas odpowiedz  
 >>>D) Jakas odpowiedz 
-
-'''
+```
 
 "Pytanie" is a (polish) keyword for parsing in this version so it is necessary for now.
 
