@@ -72,13 +72,13 @@ public final class QuestionActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        questionContent = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionContent));
-        incorrect = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionIncorrect));
         score = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionScore));
-        questionsNumber = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionsNumber));
-        nextQuestionButton = ((Button) hasViews.findViewById(com.example.quiz.R.id.nextQuestion));
-        questionNumber = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionNumber));
         correct = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionCorrect));
+        questionContent = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionContent));
+        questionNumber = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionNumber));
+        nextQuestionButton = ((Button) hasViews.findViewById(com.example.quiz.R.id.nextQuestion));
+        questionsNumber = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionsNumber));
+        incorrect = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionIncorrect));
         if (nextQuestionButton!= null) {
             nextQuestionButton.setOnClickListener(new OnClickListener() {
 

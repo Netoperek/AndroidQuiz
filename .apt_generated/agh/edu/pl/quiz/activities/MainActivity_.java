@@ -71,8 +71,8 @@ public final class MainActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        chooseFileButton = ((Button) hasViews.findViewById(id.chooseFileButton));
         addFileText = ((TextView) hasViews.findViewById(id.addFile));
+        chooseFileButton = ((Button) hasViews.findViewById(id.chooseFileButton));
         if (chooseFileButton!= null) {
             chooseFileButton.setOnClickListener(new OnClickListener() {
 

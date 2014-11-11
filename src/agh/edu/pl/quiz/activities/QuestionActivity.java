@@ -65,6 +65,11 @@ public class QuestionActivity extends ListActivity {
 			questionsNumber.setText("");
 			questionNumber.setText(QUESTION_NUMBER + " " + number + " / "
 					+ QuestionsDispatcher.getQuestionsNumber());
+			if(question.getContent().length() >=300 ) {
+				questionContent.setTextSize(18);
+			} else {
+				questionContent.setTextSize(21);
+			}
 			questionContent.setText(question.getContent());
 			questionContent.setTextColor(QUESTION_COLOR);
 			nextQuestionButton.setText(CHECK_ANSWERS);

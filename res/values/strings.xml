@@ -9,7 +9,7 @@
     <string name="myInput">myInput</string>
     <string name="questions">Choose file with questions</string>
     <string name="choose">Choose a file</string>
-    <string name="title_activity_file_exploring">FileExploringActivity</string>
+    <string name="title_activity_file_exploring">Choose File With Questions</string>
     <string name="path">path</string>
     <string name="noData">No Data</string>
     <string name="readExternalStorage">read external storage</string>
@@ -22,5 +22,6 @@
     <string name="score">"Score: "</string>
     <string name="restart">"Restart"</string>
     <string name="load">"Load Questions"</string>
+    <string name="desc">"Some Desc"</string>
 
 </resources>
