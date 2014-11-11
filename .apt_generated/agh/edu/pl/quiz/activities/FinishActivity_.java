@@ -71,11 +71,11 @@ public final class FinishActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        score = ((TextView) hasViews.findViewById(id.score));
         correct = ((TextView) hasViews.findViewById(id.correct));
+        score = ((TextView) hasViews.findViewById(id.score));
         finishRestartButton = ((Button) hasViews.findViewById(id.finishResterButton));
-        finishLoadButton = ((Button) hasViews.findViewById(id.finishLoadButton));
         incorrect = ((TextView) hasViews.findViewById(id.incorrect));
+        finishLoadButton = ((Button) hasViews.findViewById(id.finishLoadButton));
         if (finishLoadButton!= null) {
             finishLoadButton.setOnClickListener(new OnClickListener() {
 
