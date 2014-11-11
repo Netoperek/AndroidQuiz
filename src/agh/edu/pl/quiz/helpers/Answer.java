@@ -1,9 +1,10 @@
 package agh.edu.pl.quiz.helpers;
 
+
 public class Answer {
 	private boolean correct;
 	private String content;
-	private boolean markedCorrect;
+	private Marked marked = Marked.UNMARKED;
 
 	public String getContent() {
 		return content;
@@ -21,12 +22,26 @@ public class Answer {
 		this.correct = correct;
 	}
 
-	public boolean isMarkedCorrect() {
-		return markedCorrect;
+	public Marked getMarked() {
+		return marked;
 	}
 
-	public void setMarkedCorrect(boolean markedCorrect) {
-		this.markedCorrect = markedCorrect;
+	public void setMarked(Marked marked) {
+		this.marked = marked;
+	}
+	
+	public boolean isMarkedCorrectly() {
+		if(marked == Marked.CORRECT && isCorrect()) return true;
+		if(marked == Marked.UNMARKED && !isCorrect()) return true;
+		return false;
+	}
+	
+	public boolean isUnmarked() {
+		return marked == Marked.UNMARKED;
+	}
+	
+	public enum Marked {
+		CORRECT, INCORRECT, UNMARKED
 	}
 
 }

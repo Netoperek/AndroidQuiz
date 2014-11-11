@@ -9,13 +9,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
+import com.example.quiz.R.id;
+import com.example.quiz.R.layout;
 import org.androidannotations.api.builder.ActivityIntentBuilder;
 import org.androidannotations.api.view.HasViews;
+import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
 
 public final class FinishActivity_
     extends FinishActivity
-    implements HasViews
+    implements HasViews, OnViewChangedListener
 {
 
     private final OnViewChangedNotifier onViewChangedNotifier_ = new OnViewChangedNotifier();
@@ -26,9 +30,11 @@ public final class FinishActivity_
         init_(savedInstanceState);
         super.onCreate(savedInstanceState);
         OnViewChangedNotifier.replaceNotifier(previousNotifier);
+        setContentView(layout.activity_finish);
     }
 
     private void init_(Bundle savedInstanceState) {
+        OnViewChangedNotifier.registerOnViewChangedListener(this);
     }
 
     @Override
@@ -59,6 +65,13 @@ public final class FinishActivity_
 
     public static FinishActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
         return new FinishActivity_.IntentBuilder_(supportFragment);
+    }
+
+    @Override
+    public void onViewChanged(HasViews hasViews) {
+        correct = ((TextView) hasViews.findViewById(id.correct));
+        incorrect = ((TextView) hasViews.findViewById(id.incorrect));
+        showStatistics();
     }
 
     public static class IntentBuilder_

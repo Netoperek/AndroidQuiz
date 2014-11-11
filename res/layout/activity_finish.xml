@@ -8,4 +8,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="agh.edu.pl.quiz.activities.FinishActivity" >
 
+    <TextView
+        android:id="@+id/incorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/correct"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/correct"
+        android:layout_marginTop="23dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/correct"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/correct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/score"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>

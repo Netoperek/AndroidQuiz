@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="agh.edu.pl.quiz.activities.MyActivity_"
+            android:name="agh.edu.pl.quiz.activities.MainActivity_"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

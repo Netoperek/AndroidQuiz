@@ -20,8 +20,14 @@ public class Question {
 		return correct;
 	}
 
-	public void setCorrect(boolean correct) {
-		this.correct = correct;
+	public void setCorrect() {
+		for(int i = 0; i < answers.size(); i++) {
+			if(!answers.get(i).isMarkedCorrectly()) {
+				this.correct = false;
+				return;
+			}
+		}
+		this.correct = true;
 	}
 
 	public String getContent() {
@@ -39,4 +45,5 @@ public class Question {
 	public void setAnswers(SparseArray<Answer> answers) {
 		this.answers = answers;
 	}
+	
 }

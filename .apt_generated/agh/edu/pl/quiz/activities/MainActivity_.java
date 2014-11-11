@@ -10,18 +10,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import com.example.quiz.R.id;
 import com.example.quiz.R.layout;
 import org.androidannotations.api.builder.ActivityIntentBuilder;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
 
-public final class QuestionActivity_
-    extends QuestionActivity
+public final class MainActivity_
+    extends MainActivity
     implements HasViews, OnViewChangedListener
 {
 
@@ -33,7 +32,7 @@ public final class QuestionActivity_
         init_(savedInstanceState);
         super.onCreate(savedInstanceState);
         OnViewChangedNotifier.replaceNotifier(previousNotifier);
-        setContentView(layout.activity_question);
+        setContentView(layout.activity_main);
     }
 
     private void init_(Bundle savedInstanceState) {
@@ -58,72 +57,55 @@ public final class QuestionActivity_
         onViewChangedNotifier_.notifyViewChanged(this);
     }
 
-    public static QuestionActivity_.IntentBuilder_ intent(Context context) {
-        return new QuestionActivity_.IntentBuilder_(context);
+    public static MainActivity_.IntentBuilder_ intent(Context context) {
+        return new MainActivity_.IntentBuilder_(context);
     }
 
-    public static QuestionActivity_.IntentBuilder_ intent(android.app.Fragment fragment) {
-        return new QuestionActivity_.IntentBuilder_(fragment);
+    public static MainActivity_.IntentBuilder_ intent(android.app.Fragment fragment) {
+        return new MainActivity_.IntentBuilder_(fragment);
     }
 
-    public static QuestionActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
-        return new QuestionActivity_.IntentBuilder_(supportFragment);
+    public static MainActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
+        return new MainActivity_.IntentBuilder_(supportFragment);
     }
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        questionNumber = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionNumber));
-        questionsNumber = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionsNumber));
-        questionContent = ((TextView) hasViews.findViewById(com.example.quiz.R.id.questionContent));
-        nextQuestionButton = ((Button) hasViews.findViewById(com.example.quiz.R.id.nextQuestion));
-        if (nextQuestionButton!= null) {
-            nextQuestionButton.setOnClickListener(new OnClickListener() {
+        addFileText = ((TextView) hasViews.findViewById(id.addFile));
+        chooseFileButton = ((Button) hasViews.findViewById(id.chooseFileButton));
+        if (chooseFileButton!= null) {
+            chooseFileButton.setOnClickListener(new OnClickListener() {
 
 
                 @Override
                 public void onClick(View view) {
-                    QuestionActivity_.this.getNextQuestion();
+                    MainActivity_.this.chooseFile();
                 }
 
             }
             );
         }
-        {
-            AdapterView<?> view = ((AdapterView<?> ) hasViews.findViewById(android.R.id.list));
-            if (view!= null) {
-                view.setOnItemClickListener(new OnItemClickListener() {
-
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        QuestionActivity_.this.listItemClicked(position);
-                    }
-
-                }
-                );
-            }
-        }
-        setButtonText();
+        setConf();
     }
 
     public static class IntentBuilder_
-        extends ActivityIntentBuilder<QuestionActivity_.IntentBuilder_>
+        extends ActivityIntentBuilder<MainActivity_.IntentBuilder_>
     {
 
         private android.app.Fragment fragment_;
         private android.support.v4.app.Fragment fragmentSupport_;
 
         public IntentBuilder_(Context context) {
-            super(context, QuestionActivity_.class);
+            super(context, MainActivity_.class);
         }
 
         public IntentBuilder_(android.app.Fragment fragment) {
-            super(fragment.getActivity(), QuestionActivity_.class);
+            super(fragment.getActivity(), MainActivity_.class);
             fragment_ = fragment;
         }
 
         public IntentBuilder_(android.support.v4.app.Fragment fragment) {
-            super(fragment.getActivity(), QuestionActivity_.class);
+            super(fragment.getActivity(), MainActivity_.class);
             fragmentSupport_ = fragment;
         }
 

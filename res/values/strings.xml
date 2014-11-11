@@ -7,8 +7,8 @@
     <string name="quiz">Quiz</string>
     <string name="submit">Submit</string>
     <string name="myInput">myInput</string>
-    <string name="questions">Add file with questions</string>
-    <string name="choose">choose file...</string>
+    <string name="questions">Choose file with questions</string>
+    <string name="choose">Choose a file</string>
     <string name="title_activity_file_exploring">FileExploringActivity</string>
     <string name="path">path</string>
     <string name="noData">No Data</string>
@@ -17,5 +17,8 @@
     <string name="questionNumber">Question Number: </string>
     <string name="nextQuestion">Next Question</string>
     <string name="title_activity_finish">FinishActivity</string>
+    <string name="correct">"Correct: "</string>
+    <string name="incorrect">"Incorrect: "</string>
+    <string name="score">"Score: "</string>
 
 </resources>
