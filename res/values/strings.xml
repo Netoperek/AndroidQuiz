@@ -16,5 +16,6 @@
     <string name="title_activity_question">QuestionActivity</string>
     <string name="questionNumber">Question Number: </string>
     <string name="nextQuestion">Next Question</string>
+    <string name="title_activity_finish">FinishActivity</string>
 
 </resources>
