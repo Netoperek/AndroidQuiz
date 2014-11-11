@@ -67,3 +67,5 @@ Some screenshots:
 
 ![Alt text](http://s13.postimg.org/jgbwrdxiv/Screenshot_2014_11_11_18_43_05.png)
 
+
+When Question Activity is in front you can also choose to restart the test (right upper icon) or load questions + next to restart icon
