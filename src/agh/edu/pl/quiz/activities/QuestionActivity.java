@@ -65,7 +65,7 @@ public class QuestionActivity extends ListActivity {
 			questionsNumber.setText("");
 			questionNumber.setText(QUESTION_NUMBER + " " + number + " / "
 					+ QuestionsDispatcher.getQuestionsNumber());
-			if(question.getContent().length() >=300 ) {
+			if (question.getContent().length() >= 300) {
 				questionContent.setTextSize(18);
 			} else {
 				questionContent.setTextSize(21);
@@ -209,16 +209,20 @@ public class QuestionActivity extends ListActivity {
 	@ItemClick
 	void listItemClicked(int position) {
 		if (!selected.contains(position)) {
-			selected.add(position);
-			this.getListView().getChildAt(position)
-					.setBackgroundColor(SELECTED_COLOR);
-			question.getAnswers().get(position).setMarked(Marked.CORRECT);
+			if (this.getListView().getChildAt(position) != null) {
+				selected.add(position);
+				this.getListView().getChildAt(position)
+						.setBackgroundColor(SELECTED_COLOR);
+				question.getAnswers().get(position).setMarked(Marked.CORRECT);
+			}
 
 		} else {
-			selected.remove(Integer.valueOf(position));
-			this.getListView().getChildAt(position)
-					.setBackgroundColor(UNSELECTED_COLOR);
-			question.getAnswers().get(position).setMarked(Marked.UNMARKED);
+			if (this.getListView().getChildAt(position) != null) {
+				selected.remove(Integer.valueOf(position));
+				this.getListView().getChildAt(position)
+						.setBackgroundColor(UNSELECTED_COLOR);
+				question.getAnswers().get(position).setMarked(Marked.UNMARKED);
+			}
 		}
 
 	}
